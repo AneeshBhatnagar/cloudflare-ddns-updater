@@ -97,7 +97,7 @@ def main():
 
         if current_public_ip == current_cloudflare_ip:
             print(f"IP has not changed since last run. public_ip={current_public_ip}, cloudflare_ip={current_cloudflare_ip}")
-            sys.exit(0)
+            return None
 
         return_code = update_cloudflare_dns(current_public_ip, dns_id)
 
