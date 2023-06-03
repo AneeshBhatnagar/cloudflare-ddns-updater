@@ -106,7 +106,9 @@ def main():
 if __name__ == "__main__":
     while True:
         try:
+            print("Starting processing...")
             main()
+            print("Sleeping for 300 seconds...")
             time.sleep(300)
         except SystemExit:
             print("FAILED. EXITING")
