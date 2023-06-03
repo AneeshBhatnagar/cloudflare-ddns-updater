@@ -10,4 +10,4 @@ RUN python3.10 -m pip install -r /app/requirements.txt
 COPY . /app
 
 
-CMD [ "python", "/app/update-cloudflare.py" ]
+CMD [ "python", "-u", "/app/update-cloudflare.py" ]
