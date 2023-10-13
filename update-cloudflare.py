@@ -6,7 +6,7 @@ import subprocess
 import time
 
 REQUIRED_ENV_VARS = ["CLOUDFLARE_API_KEY", "CLOUDFLARE_ZONE_ID", "CLOUDFLARE_DOMAIN", "CLOUDFLARE_SUBDOMAINS"]
-OPTIONAL_ENV_VARS = ["PROXY"]
+OPTIONAL_ENV_VARS = ["CLOUDFLARE_PROXIED"]
 
 def verify_necessary_config():
     missing_variables = []
