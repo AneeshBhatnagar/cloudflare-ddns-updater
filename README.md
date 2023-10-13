@@ -39,4 +39,4 @@ services:
 
 ## Contributing
 
-Do you think something's broken and you can help fix it? Do you think there's a missing feature that this would benefit from? In either of these two cases, please feel free to create an [issue](./issues/new) in the repository so we can discuss about it. I'm more than happy to accept contributions to this repository.
+Do you think something's broken and you can help fix it? Do you think there's a missing feature that this would benefit from? In either of these two cases, please feel free to create an [issue](/../../issues/new) in the repository so we can discuss about it. I'm more than happy to accept contributions to this repository.
