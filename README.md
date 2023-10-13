@@ -30,6 +30,7 @@ services:
       - CLOUDFLARE_SUBDOMAINS=<space_separated_subdomains/A-records_HERE>
       # Optional variables
       - CLOUDFLARE_PROXIED=<0 or 1 if the record should be proxied> #Default 0
+      - CLOUDFLARE_REFRESH_SECONDS=<number> #Default 300 seconds (5 mins)
 ```
 
 1. If you saved the above file as `docker-compose.yaml`, then you can use `docker compose up -d` or `docker-compose up -d` to run this in a detached mode in the background with all your env config

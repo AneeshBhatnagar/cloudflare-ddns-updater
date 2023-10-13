@@ -6,7 +6,7 @@ import subprocess
 import time
 
 REQUIRED_ENV_VARS = ["CLOUDFLARE_API_KEY", "CLOUDFLARE_ZONE_ID", "CLOUDFLARE_DOMAIN", "CLOUDFLARE_SUBDOMAINS"]
-OPTIONAL_ENV_VARS = ["CLOUDFLARE_PROXIED"]
+OPTIONAL_ENV_VARS = ["CLOUDFLARE_PROXIED", "CLOUDFLARE_REFRESH_SECONDS"]
 
 def verify_necessary_config():
     missing_variables = []
@@ -17,6 +17,10 @@ def verify_necessary_config():
     if missing_variables:
         print(f"Some of required environment variables are missing. Missing variables={missing_variables}")
         sys.exit(1)
+
+    for variable in OPTIONAL_ENV_VARS:
+        if variable in os.environ and os.environ.get(variable, None) is not None:
+            print(f"Found optional env variable, {variable}={os.environ.get(variable)}")
 
 def get_current_public_ip():
     command = "dig +short myip.opendns.com @resolver1.opendns.com".split()
@@ -104,15 +108,16 @@ def main():
     return return_code
 
 if __name__ == "__main__":
+    sleep_seconds = int(os.environ.get("CLOUDFLARE_REFRESH_SECONDS", "300"))
     while True:
         try:
             print("Starting processing...")
             main()
-            print("Sleeping for 300 seconds...")
-            time.sleep(300)
+            print(f"Sleeping for {sleep_seconds} seconds...")
+            time.sleep(sleep_seconds)
         except SystemExit:
             print("FAILED. EXITING")
             break
         except:
             print("FAILED... RETRYING")
-            time.sleep(300)
+            time.sleep(sleep_seconds)
