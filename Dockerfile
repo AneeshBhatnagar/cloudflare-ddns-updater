@@ -1,10 +1,10 @@
-FROM python:3.13-slim
+FROM python:3.14-slim
 WORKDIR /app
 
 COPY requirements.txt /app/requirements.txt
 
 RUN apt-get update && apt-get install --yes --force-yes dnsutils
-RUN python3.13 -m pip install -r /app/requirements.txt
+RUN python3.14 -m pip install -r /app/requirements.txt
 
 
 COPY . /app
